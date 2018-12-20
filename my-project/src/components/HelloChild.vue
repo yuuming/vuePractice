@@ -1,7 +1,8 @@
 <template>
  <div>
   <p>{{title}}</p>
-  <p>{{message}}</p>
+  <button v-on:click="incrementCounter">{{ counter }}</button>
+  <!-- <p>{{message}}</p> -->
  </div>
 </template>
  
@@ -9,9 +10,15 @@
 export default {
   data: function () {
     return {
-      title: 'Hello Child vue'
+      title: 'Hello Child vue',
+      counter: 0
     }
   },
-  props: ['message']
+  methods: {
+      incrementCounter: function () {
+    this.counter += 1
+    this.$emit('increment')         
+      }
+  }
 }
 </script>
